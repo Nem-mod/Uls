@@ -1,13 +1,18 @@
 #pragma once
 
-#include <stdio.h>
 #include "libmx.h"
 
-#define VALID_FLAGS "ACGRSTaclmrtu1"
 #include <stdio.h>
 #include <dirent.h>
 #include <errno.h>
-#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <pwd.h>
+#include <grp.h>
+#include <time.h>
+
+#define VALID_FLAGS "ACGRSTaclmrtu1"
 
 void mx_input_validation(int argc, char* argv[]);
 void mx_print_usage(char err);
