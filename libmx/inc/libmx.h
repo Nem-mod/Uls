@@ -92,7 +92,7 @@ char *mx_file_to_str(const char *filename);
 int mx_file_len(const char *filename);
 char *mx_replace_substr(const char *str, const char *sub, const char *replace);
 int mx_read_line(char **lineptr, size_t buf_size, char delim, const int fd);
-
+char **mx_create_char_arr(int number);
 /*
 **********MEM_PACK**********
 */
