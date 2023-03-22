@@ -7,8 +7,11 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <fcntl.h>
-#include <malloc.h>             // for Linux -> malloc_usable_size
-// #include <malloc/malloc.h>      // for MacOS -> malloc_size
+#if __linux__
+    #include <malloc.h>             // for Linux -> malloc_usable_size
+#elif __APPLE__
+    #include <malloc/malloc.h>      // for MacOS -> malloc_size
+#endif
 
 typedef struct s_list {
     void *data;
@@ -93,6 +96,7 @@ int mx_file_len(const char *filename);
 char *mx_replace_substr(const char *str, const char *sub, const char *replace);
 int mx_read_line(char **lineptr, size_t buf_size, char delim, const int fd);
 char **mx_create_char_arr(int number);
+
 /*
 **********MEM_PACK**********
 */
