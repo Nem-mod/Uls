@@ -7,7 +7,7 @@ t_ls* mx_create_ls(char* path) {
     struct dirent* entry;
 
     ls->path = mx_strdup(path);
-    do {
+    do {                     // while do replace!!!!
         entry = readdir(dir);
         if (entry == NULL)
             break;

@@ -83,9 +83,28 @@ int main(int argc, char* argv[]) {
     t_ls* ls = mx_create_ls(".");
 
     for (int i = 0; i < ls->elements_count; i++) {
+		mx_printstr(ls->elements[i].permission);
+		mx_printchar('\t');
+		mx_printint(ls->elements[i].links);
+		mx_printchar('\t');
+		mx_printstr(ls->elements[i].owner_name);
+		mx_printchar('\t');
+		mx_printstr(ls->elements[i].group_name);
+		mx_printchar('\t');
+		mx_printint(ls->elements[i].size->size);
+		mx_printchar('\t');
         mx_printstr(ls->elements[i].name);
         mx_printchar('\n');
     }
+
+	struct timespec ts;    
+	clock_gettime(CLOCK_REALTIME, &ts);
+
+	char * p = ctime(&ts.tv_sec); /* Note that ctime() isn't thread-safe. */
+	// p[strcspn(p, "\r\n")] = 0;
+
+	printf("Date: %s %ldns\n", p, ts.tv_nsec);
+
     return 0;
 	// DIR *dir;
     // struct dirent *entry;
