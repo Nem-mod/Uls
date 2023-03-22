@@ -7,6 +7,7 @@ void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry) {
 
     element->name = mx_get_element_name(entry);
 
+    if (ls == NULL) {}
     stat(mx_strjoin(ls->path, element->name), &element_stat);     // Add error handle
     user_info = getpwuid(element_stat.st_uid);
     group_info = getgrgid(element_stat.st_gid);

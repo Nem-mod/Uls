@@ -48,9 +48,9 @@ typedef struct s_element {
     char* owner_name;
     char* group_name;
     t_size* size;
-    // t_date* access_date;
-    // t_date* modify_date;
-    // t_date* status_date;
+    t_date* access_date;
+    t_date* modify_date;
+    t_date* status_date;
 
 }               t_element;
 
