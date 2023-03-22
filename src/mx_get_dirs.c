@@ -7,6 +7,12 @@ char** mx_get_dirs(int argc, char* argv[]){
 	for(int i = 1; i < argc; i++) {
 		if(argv[i][0] == '-')
 			continue;
+		
+		if(opendir(argv[i]) == NULL) {
+			mx_print_dir_err(argv[i]);
+			continue;
+		}
+		
 		array_of_ex_dirictories[k] = mx_strdup(argv[i]);
 		k++;
 	}

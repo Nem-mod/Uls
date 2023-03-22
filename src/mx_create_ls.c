@@ -6,13 +6,16 @@ t_ls* mx_create_ls(char* path) {
     DIR* dir = opendir(path); 
     struct dirent* entry;
 
+    if (dir == NULL)
+        return NULL;
+
     ls->path = mx_strdup(path);
-    do {                     // while do replace!!!!
-        entry = readdir(dir);
-        if (entry == NULL)
-            break;
+    entry = readdir(dir);
+    while (entry != NULL) {
         elements_count++;
-    } while (entry != NULL);
+        entry = readdir(dir);
+    }
+    
     
     ls->elements = malloc(sizeof(t_element) * elements_count);
     ls->elements_count = elements_count;

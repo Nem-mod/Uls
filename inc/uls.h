@@ -15,9 +15,9 @@
 // #define VALID_FLAGS "ACGRSTaclmrtu1"
 #define VALID_FLAGS "l"
 
-typedef struct s_date {
+// typedef struct s_date {
 
-}               t_date;
+// }               t_date;
 
 typedef struct s_size {
     
@@ -35,9 +35,9 @@ typedef struct s_element {
     char* owner_name;
     char* group_name;
     t_size* size;
-    t_date* access_date;
-    t_date* modify_date;
-    t_date* status_date;
+    // t_date* access_date;
+    // t_date* modify_date;
+    // t_date* status_date;
 
 }               t_element;
 
@@ -54,12 +54,14 @@ typedef struct s_shell {
 
     char* flags;
     char** dirs;
-
+    t_ls** ls_array;
 
 }              t_shell;
 
-char* mx_input_validation(int argc, char* argv[]);
+int mx_input_validation(int argc, char* argv[]);
 void mx_print_usage(char err);
+void mx_print_dir_err(char* dir);
+
 void mx_add_flag(char* flags_string, char flag);
 char* mx_get_flags(int argc, char* argv[]);
 char** mx_get_dirs(int argc, char* argv[]);
@@ -72,8 +74,10 @@ nlink_t mx_get_element_links_number(struct stat* stat);
 char* mx_get_element_owner_name(struct passwd* user_info);
 char* mx_get_element_group_name(struct group* group_info);
 t_size* mx_get_element_size(struct stat* stat);
-
+t_ls **mx_create_ls_array(int size, char** dirs);
 // void mx_ls(t_shell* shell);
 
 int mx_open_dir(t_shell* shell);
+
+
 

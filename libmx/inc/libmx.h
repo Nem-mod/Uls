@@ -96,6 +96,7 @@ int mx_file_len(const char *filename);
 char *mx_replace_substr(const char *str, const char *sub, const char *replace);
 int mx_read_line(char **lineptr, size_t buf_size, char delim, const int fd);
 char **mx_create_char_arr(int number);
+int mx_get_size_array_of_strings(char** arr);
 
 /*
 **********MEM_PACK**********
