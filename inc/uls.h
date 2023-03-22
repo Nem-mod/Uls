@@ -19,9 +19,18 @@
 #define DISPLAY_MODE_C 0 
 #define DISPLAY_MODE_1 1
 #define DISPLAY_MODE_l 2
-// typedef struct s_date {
 
-// }               t_date;
+typedef struct s_date {
+
+    char* month;
+    char* day;
+    char* year;
+    char* long_time;
+    char* short_time;
+    char* long_date;
+    char* short_date;
+
+}               t_date;
 
 typedef struct s_size {
     
@@ -75,13 +84,14 @@ char** mx_get_dirs(int argc, char* argv[]);
 t_shell* mx_create_shell(int argc, char* argv[]);
 
 t_ls* mx_create_ls(char* path);
-void mx_set_element_info(t_element* element, struct dirent* entry);
+void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry);
 char* mx_get_element_name(struct dirent* entry);
 char* mx_get_element_permission(struct stat* stat);
 nlink_t mx_get_element_links_number(struct stat* stat);
 char* mx_get_element_owner_name(struct passwd* user_info);
 char* mx_get_element_group_name(struct group* group_info);
 t_size* mx_get_element_size(struct stat* stat);
+t_date* mx_get_element_date(time_t element_time);
 
 t_ls **mx_create_ls_array(int size, char** dirs);
 // void mx_ls(t_shell* shell);

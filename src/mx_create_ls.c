@@ -23,8 +23,7 @@ t_ls* mx_create_ls(char* path) {
 
     for (int i = 0; i < elements_count; i++) {
         entry = readdir(dir);
-        mx_set_element_info(&ls->elements[i], entry);
-        
+        mx_set_element_info(ls, &ls->elements[i], entry);
     }
     
     return ls;
