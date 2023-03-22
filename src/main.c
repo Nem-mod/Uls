@@ -8,7 +8,9 @@ int main(int argc, char* argv[]) {
     }
 
 	t_shell* shell = mx_create_shell(argc, argv);
-	mx_print_strarr(shell->dirs, " ");
+	mx_print_strarr(shell->dirs, "\n");
+	mx_printint(shell->display_mode);
+	mx_shell_execute(shell);
     // t_ls* ls = mx_create_ls(".");
 
     // for (int i = 0; i < ls->elements_count; i++) {

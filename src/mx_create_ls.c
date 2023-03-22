@@ -16,7 +16,6 @@ t_ls* mx_create_ls(char* path) {
         entry = readdir(dir);
     }
     
-    
     ls->elements = malloc(sizeof(t_element) * elements_count);
     ls->elements_count = elements_count;
     closedir(dir);
@@ -25,7 +24,8 @@ t_ls* mx_create_ls(char* path) {
     for (int i = 0; i < elements_count; i++) {
         entry = readdir(dir);
         mx_set_element_info(&ls->elements[i], entry);
+        
     }
-
+    
     return ls;
 }

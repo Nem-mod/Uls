@@ -16,6 +16,11 @@ char** mx_get_dirs(int argc, char* argv[]){
 		array_of_ex_dirictories[k] = mx_strdup(argv[i]);
 		k++;
 	}
+
+	if (k == 0) {
+		array_of_ex_dirictories[0] = mx_strdup(".");
+	}
+	
 	
 	return array_of_ex_dirictories;
 }
