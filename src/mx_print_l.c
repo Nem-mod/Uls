@@ -3,9 +3,9 @@
 void mx_print_l(t_shell* shell) {
     t_ls** ls_array = shell->ls_array;
     for (int i = 0;  i < shell->ls_count; i++) {
-        if (shell->ls_count != 1 || mx_strcmp(ls_array[i]->path, ".") != 0) {
-            mx_printstr(ls_array[i]->path);
-            mx_printchar('\n');   
+        if (shell->ls_count != 1) {
+            mx_printstr(ls_array[i]->name);
+            mx_printstr(":\n");   
         }
     
         mx_printstr("total ");
@@ -30,8 +30,8 @@ void mx_print_l(t_shell* shell) {
             mx_printstr(ls_array[i]->elements[k].name);
             mx_printchar('\n');
         }
-        
-        if (shell->ls_count != 1)
+
+        if (i != shell->ls_count - 1)
             mx_printchar('\n');
     }
     

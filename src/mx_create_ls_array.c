@@ -5,7 +5,7 @@ t_ls **mx_create_ls_array(int size, char** dirs) {
     int i;
 
     for (i = 0; i < size; i++)
-        ls[i] = mx_create_ls(mx_strjoin("./", dirs[i]));
+        ls[i] = mx_create_ls(dirs[i]);
 
     return ls;
 }
