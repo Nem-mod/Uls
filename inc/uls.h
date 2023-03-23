@@ -15,10 +15,10 @@
 // #define VALID_FLAGS "ACGRSTaclmrtu1"
 #define VALID_FLAGS "Cl1"
 
-
-#define DISPLAY_MODE_C 0 
-#define DISPLAY_MODE_1 1
-#define DISPLAY_MODE_l 2
+#define DISPLAY_MODE_NONE 0
+#define DISPLAY_MODE_C 1 
+#define DISPLAY_MODE_1 2
+#define DISPLAY_MODE_l 3
 
 typedef struct s_date {
 
@@ -102,5 +102,6 @@ int mx_shell_execute(t_shell* shell);
 // PRINT
 void mx_print_l(t_ls** ls_array);
 void mx_print_C(t_ls** ls_array);
+void mx_print_one_col(t_ls** ls_array);
 
 

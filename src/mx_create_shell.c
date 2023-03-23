@@ -1,7 +1,7 @@
 #include "uls.h"
 
 static int get_last_entry_of_display_mode(char* flags) {
-    int mode = DISPLAY_MODE_C;
+    int mode = DISPLAY_MODE_NONE;
     for (int i = 0; i < mx_strlen(flags); i++) {
         if(flags[i] == 'l')
             mode = DISPLAY_MODE_l;
