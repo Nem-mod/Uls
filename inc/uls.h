@@ -22,11 +22,6 @@
 
 typedef struct s_date {
 
-    char* month;
-    char* day;
-    char* year;
-    char* long_time;
-    char* short_time;
     char* long_date;
     char* short_date;
 
@@ -43,6 +38,7 @@ typedef struct s_size {
 typedef struct s_element {
 
     char* name;
+    char* path;
     char* permission;
     nlink_t links;
     char* owner_name;
@@ -51,6 +47,7 @@ typedef struct s_element {
     t_date* access_date;
     t_date* modify_date;
     t_date* status_date;
+    bool isVisible;
 
 }               t_element;
 
@@ -60,6 +57,7 @@ typedef struct s_ls {
     // char* flags;
     int elements_count;
     t_element* elements;
+    int total;
 
 }               t_ls;
 
@@ -86,6 +84,7 @@ t_shell* mx_create_shell(int argc, char* argv[]);
 t_ls* mx_create_ls(char* path);
 void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry);
 char* mx_get_element_name(struct dirent* entry);
+char* mx_get_element_path(t_ls* ls, struct dirent* entry);
 char* mx_get_element_permission(struct stat* stat);
 nlink_t mx_get_element_links_number(struct stat* stat);
 char* mx_get_element_owner_name(struct passwd* user_info);

@@ -6,11 +6,16 @@ void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry) {
     struct group* group_info; // Add error handle
 
     element->name = mx_get_element_name(entry);
+    element->path = mx_get_element_path(ls, entry);
 
-    if (ls == NULL) {}
     stat(mx_strjoin(ls->path, element->name), &element_stat);     // Add error handle
     user_info = getpwuid(element_stat.st_uid);
     group_info = getgrgid(element_stat.st_gid);
+    ls->total += element_stat.st_blocks;
+    if (element->name[0] == '.')
+        element->isVisible = false;
+    else
+        element->isVisible = true;       
 
     element->permission = mx_get_element_permission(&element_stat);
     element->links = mx_get_element_links_number(&element_stat);

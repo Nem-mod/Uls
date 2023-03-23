@@ -8,24 +8,25 @@ int main(int argc, char* argv[]) {
     }
 
 	t_shell* shell = mx_create_shell(argc, argv);
-	mx_print_strarr(shell->dirs, "\n");
-	mx_printint(shell->display_mode);
+	
+	// mx_print_strarr(shell->dirs, "\n");
 	mx_shell_execute(shell);
-    // t_ls* ls = mx_create_ls(".");
+    // t_ls* ls = mx_create_ls("./");
 
     // for (int i = 0; i < ls->elements_count; i++) {
-	// 	mx_printstr(ls->elements[i].permission);
-	// 	mx_printchar('\t');
-	// 	mx_printint(ls->elements[i].links);
-	// 	mx_printchar('\t');
-	// 	mx_printstr(ls->elements[i].owner_name);
-	// 	mx_printchar('\t');
-	// 	mx_printstr(ls->elements[i].group_name);
-	// 	mx_printchar('\t');
-	// 	mx_printint(ls->elements[i].size->size);
-	// 	mx_printchar('\t');
-    //     mx_printstr(ls->elements[i].name);
-    //     mx_printchar('\n');
+		// mx_printstr(ls->elements[i].permission);
+		// mx_printchar('\t');
+		// mx_printint(ls->elements[i].links);
+		// mx_printchar('\t');
+		// mx_printstr(ls->elements[i].owner_name);
+		// mx_printchar('\t');
+		// mx_printstr(ls->elements[i].group_name);
+		// mx_printchar('\t');
+		// mx_printint(ls->elements[i].size->size);
+		// mx_printchar('\t');
+		// mx_printstr(ls->elements[i].access_date->long_date);
+        // mx_printstr(ls->elements[i].name);
+        // mx_printchar('\n');
     // }
 
 	// struct timespec ts;    
