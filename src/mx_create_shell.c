@@ -15,11 +15,13 @@ static int get_last_entry_of_display_mode(char* flags) {
 
 t_shell* mx_create_shell(int argc, char* argv[]) {
     t_shell* shell = malloc(sizeof(t_shell));
+    int amount_of_dirs;
     
     shell->flags = mx_get_flags(argc, argv);
     shell->dirs = mx_get_dirs(argc, argv);
-    int amount_of_dirs = mx_get_size_array_of_strings(shell->dirs);
-    shell->ls_array = mx_create_ls_array(amount_of_dirs, shell->dirs);
+    amount_of_dirs = mx_get_size_array_of_strings(shell->dirs);
+    shell->ls_count = amount_of_dirs;
+    shell->ls_array = mx_create_ls_array(shell->ls_count, shell->dirs);
     shell->display_mode = get_last_entry_of_display_mode(shell->flags);
     return shell;
 }

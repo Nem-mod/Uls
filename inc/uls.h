@@ -65,6 +65,7 @@ typedef struct s_shell {
 
     char* flags;
     char** dirs;
+    int ls_count;
     t_ls** ls_array;
     int display_mode;
 
@@ -100,7 +101,7 @@ int mx_open_dir(t_shell* shell);
 int mx_shell_execute(t_shell* shell);
 
 // PRINT
-void mx_print_l(t_ls** ls_array);
-void mx_print_C(t_ls** ls_array);
+void mx_print_l(t_shell* shell);
+void mx_print_C(t_shell* shell);
 
 
