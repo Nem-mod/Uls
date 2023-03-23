@@ -21,6 +21,7 @@ char** mx_get_dirs(int argc, char* argv[]){
 		array_of_ex_dirictories[0] = mx_strdup("./");
 	}
 	
+	mx_bubble_sort(array_of_ex_dirictories, k);
 	
 	return array_of_ex_dirictories;
 }

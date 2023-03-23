@@ -27,6 +27,6 @@ t_date* mx_get_element_date(time_t element_time) {
     mx_strcat(date->long_date, year);
 
     date->short_date = mx_strndup(date->long_date, 12);
-
+    date->int_sec_date = element_time;
     return date;
 }

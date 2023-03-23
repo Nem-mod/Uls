@@ -24,6 +24,7 @@ typedef struct s_date {
 
     char* long_date;
     char* short_date;
+    time_t int_sec_date;
 
 }               t_date;
 
@@ -65,6 +66,7 @@ typedef struct s_shell {
 
     char* flags;
     char** dirs;
+    int ls_count;
     t_ls** ls_array;
     int display_mode;
 
@@ -100,8 +102,16 @@ int mx_open_dir(t_shell* shell);
 int mx_shell_execute(t_shell* shell);
 
 // PRINT
-void mx_print_l(t_ls** ls_array);
-void mx_print_C(t_ls** ls_array);
+void mx_print_l(t_shell* shell);
+void mx_print_C(t_shell* shell);
 void mx_print_one_col(t_ls** ls_array);
 
+
+// SORTING
+
+int mx_sort_default(t_ls** ls_array);
+int mx_sort_by_Size(t_ls** ls_array);
+int mx_sort_by_time_c(t_ls** ls_array);
+int mx_sort_by_time_t(t_ls** ls_array);
+int mx_sort_by_time_u(t_ls** ls_array);
 

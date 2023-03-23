@@ -1,15 +1,15 @@
 #include "uls.h"
 
-void mx_print_C(t_ls** ls_array){
-    int k = 0;
-    while (ls_array[k]) {
-        for (int i = 0; i < ls_array[k]->elements_count; i++) {
-            if (!ls_array[k]->elements[i].isVisible)
+void mx_print_C(t_shell* shell){
+    t_ls** ls_array = shell->ls_array;
+
+    for (int i = 0;  i < shell->ls_count; i++) {
+        for (int k = 0; k < ls_array[i]->elements_count; k++) {
+            if (!ls_array[i]->elements[k].isVisible)
                 continue;
-            mx_printstr(ls_array[k]->elements[i].name);
+            mx_printstr(ls_array[i]->elements[k].name);
             mx_printchar('\t');
         }
         mx_printchar('\n');
-        k++;
     }
 }
