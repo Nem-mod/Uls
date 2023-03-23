@@ -25,6 +25,7 @@ typedef struct s_date {
     char* long_date;
     char* short_date;
     time_t int_sec_date;
+    long int_nanosec_date;
 
 }               t_date;
 
@@ -113,7 +114,7 @@ void mx_print_one_col(t_ls** ls_array);
 
 int mx_sort_default(t_ls** ls_array);
 int mx_sort_by_Size(t_ls** ls_array);
-int mx_sort_by_time_c(t_ls** ls_array);
-int mx_sort_by_time_t(t_ls** ls_array);
-int mx_sort_by_time_u(t_ls** ls_array);
+void mx_sort_by_time_c(t_shell* shell);
+void mx_sort_by_time_t(t_shell* shell);
+void mx_sort_by_time_u(t_shell* shell);
 

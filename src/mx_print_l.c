@@ -25,10 +25,15 @@ void mx_print_l(t_shell* shell) {
             mx_printchar('\t');
             mx_printint(ls_array[i]->elements[k].size->size);
             mx_printchar('\t');
-            mx_printstr(ls_array[i]->elements[k].access_date->short_date);  // according to flags
+            mx_printstr(ls_array[i]->elements[k].modify_date->long_date);  // according to flags
             mx_printchar('\t');
             mx_printstr(ls_array[i]->elements[k].name);
             mx_printchar('\n');
+            // printf("%ld | ", ls_array[i]->elements[k].modify_date->int_sec_date);  // according to flags
+            // mx_printchar('\t');
+            // printf("%ld | ", ls_array[i]->elements[k].modify_date->int_nanosec_date);  // according to flags
+            // mx_printchar('\t');
+            // printf("%s\n", ls_array[i]->elements[k].name);
         }
 
         if (i != shell->ls_count - 1)

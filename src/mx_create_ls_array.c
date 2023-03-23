@@ -6,6 +6,7 @@ t_ls **mx_create_ls_array(int size, char** dirs) {
 
     for (i = 0; i < size; i++)
         ls[i] = mx_create_ls(dirs[i]);
+    ls[i] = NULL;
 
     return ls;
 }
