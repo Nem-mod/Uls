@@ -13,12 +13,12 @@ char** mx_get_dirs(int argc, char* argv[]){
 			continue;
 		}
 		
-		array_of_ex_dirictories[k] = mx_strjoin(mx_strdup(argv[i]), "/");
+		array_of_ex_dirictories[k] = mx_strdup(argv[i]);
 		k++;
 	}
 
 	if (k == 0) {
-		array_of_ex_dirictories[0] = mx_strdup("./");
+		array_of_ex_dirictories[0] = mx_strdup(".");
 	}
 	
 	mx_bubble_sort(array_of_ex_dirictories, k);

@@ -54,6 +54,7 @@ typedef struct s_element {
 
 typedef struct s_ls {
     
+    char* name;
     char* path;
     // char* flags;
     int elements_count;
@@ -83,7 +84,8 @@ char** mx_get_dirs(int argc, char* argv[]);
 
 t_shell* mx_create_shell(int argc, char* argv[]);
 
-t_ls* mx_create_ls(char* path);
+t_ls* mx_create_ls(char* name);
+char* mx_get_ls_path(char* name);
 void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry);
 char* mx_get_element_name(struct dirent* entry);
 char* mx_get_element_path(t_ls* ls, struct dirent* entry);
