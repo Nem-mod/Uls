@@ -29,6 +29,10 @@
 #define SORT_BY_TIME 2
 #define WITHOUT_SORT 3
 
+#define VISIBILITY_MODE_a 0
+#define VISIBILITY_MODE_A 1
+#define VISIBILITY_MODE_vis 2
+
 typedef struct s_date {
 
     char* long_date;
@@ -85,6 +89,7 @@ typedef struct s_shell {
     int display_mode;
     int display_time_mode;
     int sort_mode;
+    int visibility_mode;
 
 }              t_shell;
 
@@ -99,7 +104,7 @@ char** mx_get_dirs(int argc, char* argv[]);
 
 t_shell* mx_create_shell(int argc, char* argv[]);
 
-t_ls* mx_create_ls(char* name);
+t_ls* mx_create_ls(char* name, int visibility_mode);
 char* mx_get_ls_path(char* name);
 void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry);
 char* mx_get_element_name(struct dirent* entry);
@@ -111,7 +116,7 @@ char* mx_get_element_group_name(struct group* group_info);
 t_size* mx_get_element_size(struct stat* stat);
 t_date* mx_get_element_date(time_t element_time);
 
-t_ls **mx_create_ls_array(int size, char** dirs);
+t_ls **mx_create_ls_array(int size, char** dirs, int vivisibility_mode);
 // void mx_ls(t_shell* shell);
 
 int mx_open_dir(t_shell* shell);

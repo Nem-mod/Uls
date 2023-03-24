@@ -1,6 +1,6 @@
 #include "uls.h"
 
-t_ls* mx_create_ls(char* name) {
+t_ls* mx_create_ls(char* name, int visibility_mode){
     t_ls* ls = malloc(sizeof(t_ls));
     int elements_count = 0;
     DIR* dir = opendir(name); 
@@ -14,6 +14,25 @@ t_ls* mx_create_ls(char* name) {
 
     entry = readdir(dir);
     while (entry != NULL) {
+        
+        switch (visibility_mode)
+        {
+        case VISIBILITY_MODE_vis:
+            if(mx_get_element_name(entry)[0] == '.') {
+                entry = readdir(dir);
+                continue;
+            }
+            break;
+        
+        case VISIBILITY_MODE_A:
+            if(!mx_strcmp(entry->d_name, ".")
+            || !mx_strcmp(entry->d_name, "..")){
+                entry = readdir(dir);
+                continue;
+
+            }
+            break;
+        }
         elements_count++;
         entry = readdir(dir);
     }
@@ -26,8 +45,21 @@ t_ls* mx_create_ls(char* name) {
     ls->max_len_name = 0;
     ls->total = 0;
     ls->max_element_size = NULL;
-    for (int i = 0; i < elements_count; i++) {
+    for (int i = 0; i < elements_count;) {
         entry = readdir(dir);
+        switch (visibility_mode)
+        {
+        case VISIBILITY_MODE_vis:
+            if(mx_get_element_name(entry)[0] == '.')
+                continue;
+            break;
+        
+        case VISIBILITY_MODE_A:
+            if(!mx_strcmp(entry->d_name, ".")
+            || !mx_strcmp(entry->d_name, ".."))
+                continue;
+            break;
+        }
         mx_set_element_info(ls, &ls->elements[i], entry);
 
         if(ls->max_len_name < mx_strlen(entry->d_name)) {
@@ -39,6 +71,8 @@ t_ls* mx_create_ls(char* name) {
         } else if(ls->max_element_size->size < ls->elements[i].size->size) {
             ls->max_element_size = ls->elements[i].size;
         }
+
+        i++;
     }
     closedir(dir);
     

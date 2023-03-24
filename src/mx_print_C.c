@@ -3,7 +3,7 @@
 void mx_print_C(t_shell* shell){
     t_ls** ls_array = shell->ls_array;
     struct winsize win;
-     ioctl(STDOUT_FILENO, TIOCGWINSZ, &win);
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &win);
     //mx_printint(win.ws_col);
 
     //int cl = 0;
@@ -16,20 +16,9 @@ void mx_print_C(t_shell* shell){
         
         // mx_printint(cols);
         // mx_printchar('\n');
-        char* flag_a = mx_strchr(shell->flags, 'a');
-        char* flag_A = mx_strchr(shell->flags, 'A');
+        
+        //mx_printint(shell->ls_array[i]->elements_count);
         for (int k = 0; k < ls_array[i]->elements_count; k++) {
-            
-            
-            if (!ls_array[i]->elements[k].isVisible 
-            && !flag_a
-            && !flag_A)
-                continue;
-            if(flag_A 
-            && (!mx_strcmp(ls_array[i]->elements[k].name, ".")
-            || !mx_strcmp(ls_array[i]->elements[k].name, ".."))) {
-                continue;
-            }
             
             mx_printstr(ls_array[i]->elements[k].name);
             mx_printchar(' ');
