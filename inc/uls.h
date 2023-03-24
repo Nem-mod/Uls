@@ -13,7 +13,7 @@
 #include <time.h>
 #include <sys/ioctl.h>
 // #define VALID_FLAGS "ACGRSTaclmrtu1"
-#define VALID_FLAGS "ACSlatuc1"
+#define VALID_FLAGS "ACSlatucf1"
 
 #define DISPLAY_MODE_NONE 0
 #define DISPLAY_MODE_C 1 
@@ -27,6 +27,7 @@
 #define SORT_DEFAULT 0 
 #define SORT_BY_SIZE 1 
 #define SORT_BY_TIME 2
+#define WITHOUT_SORT 3
 
 typedef struct s_date {
 

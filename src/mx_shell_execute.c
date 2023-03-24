@@ -19,6 +19,10 @@ static void print_ls_by_display_mode(t_shell* shell) {
 }
 
 static void sort_ls(t_shell* shell) {
+    if(shell->sort_mode == WITHOUT_SORT) {
+        return;
+    } 
+
     if(shell->sort_mode == SORT_BY_TIME && shell->display_time_mode == DISPLAY_TIME_MODE_DEFAULT) {
         mx_sort_by_time_t(shell);
     }

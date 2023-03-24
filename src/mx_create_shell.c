@@ -31,6 +31,8 @@ static int get_sort_mode(char* flags) {
             mode = SORT_BY_TIME;
         if(flags[i] == 'S')
             mode = SORT_BY_SIZE;
+        if(flags[i] == 'f')
+            mode = WITHOUT_SORT;
     }
     return mode;
 }
