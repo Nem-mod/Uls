@@ -11,7 +11,7 @@
 #include <pwd.h>
 #include <grp.h>
 #include <time.h>
-
+#include <sys/ioctl.h>
 // #define VALID_FLAGS "ACGRSTaclmrtu1"
 #define VALID_FLAGS "Cl1"
 
@@ -60,6 +60,7 @@ typedef struct s_ls {
     int elements_count;
     t_element* elements;
     int total;
+    int max_len_name;
 
 }               t_ls;
 
