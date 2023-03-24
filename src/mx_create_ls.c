@@ -23,10 +23,22 @@ t_ls* mx_create_ls(char* name) {
     closedir(dir);
     dir = opendir(name);
 
+    ls->max_len_name = 0;
     ls->total = 0;
+    ls->max_element_size = NULL;
     for (int i = 0; i < elements_count; i++) {
         entry = readdir(dir);
         mx_set_element_info(ls, &ls->elements[i], entry);
+
+        if(ls->max_len_name < mx_strlen(entry->d_name)) {
+            ls->max_len_name = mx_strlen(entry->d_name);
+        }
+
+        if(ls->max_element_size == NULL) {
+            ls->max_element_size = ls->elements[i].size;
+        } else if(ls->max_element_size->size < ls->elements[i].size->size) {
+            ls->max_element_size = ls->elements[i].size;
+        }
     }
     closedir(dir);
     

@@ -13,6 +13,28 @@ static int get_last_entry_of_display_mode(char* flags) {
     return mode;
 }
 
+static int get_last_entry_of_display_time(char* flags) {
+    int mode = DISPLAY_TIME_MODE_DEFAULT;
+    for (int i = 0; i < mx_strlen(flags); i++) {
+        if(flags[i] == 'u')
+            mode = DISPLAY_TIME_MODE_u;
+        if(flags[i] == 'c')
+            mode = DISPLAY_TIME_MODE_c;
+    }
+    return mode;
+}
+
+static int get_sort_mode(char* flags) {
+    int mode = SORT_DEFAULT;
+    for (int i = 0; i < mx_strlen(flags); i++) {
+        if(flags[i] == 't')
+            mode = SORT_BY_TIME;
+        if(flags[i] == 'S')
+            mode = SORT_BY_SIZE;
+    }
+    return mode;
+}
+
 t_shell* mx_create_shell(int argc, char* argv[]) {
     t_shell* shell = malloc(sizeof(t_shell));
     int amount_of_dirs;
@@ -23,5 +45,7 @@ t_shell* mx_create_shell(int argc, char* argv[]) {
     shell->ls_count = amount_of_dirs;
     shell->ls_array = mx_create_ls_array(shell->ls_count, shell->dirs);
     shell->display_mode = get_last_entry_of_display_mode(shell->flags);
+    shell->display_time_mode = get_last_entry_of_display_time(shell->flags);
+    shell->sort_mode = get_sort_mode(shell->flags);
     return shell;
 }

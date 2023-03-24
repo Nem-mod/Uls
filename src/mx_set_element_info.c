@@ -23,9 +23,9 @@ void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry) {
     element->group_name = mx_get_element_group_name(group_info);
     element->size = mx_get_element_size(&element_stat);
     element->access_date = mx_get_element_date(element_stat.st_atime);
-    element->access_date->int_nanosec_date = element_stat.st_atimespec.tv_nsec;
+    element->access_date->int_nanosec_date = element_stat.st_atime;
     element->modify_date = mx_get_element_date(element_stat.st_mtime);
-    element->modify_date->int_nanosec_date = element_stat.st_mtimespec.tv_nsec;
+    element->modify_date->int_nanosec_date = element_stat.st_mtime;
     element->status_date = mx_get_element_date(element_stat.st_ctime);
-    element->status_date->int_nanosec_date = element_stat.st_ctimespec.tv_nsec;
+    element->status_date->int_nanosec_date = element_stat.st_ctime;
 }

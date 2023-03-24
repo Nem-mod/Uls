@@ -19,10 +19,24 @@ static void print_ls_by_display_mode(t_shell* shell) {
     
 }
 
+static void sort_ls(t_shell* shell) {
+    if(shell->sort_mode == SORT_BY_TIME) {
+        mx_sort_by_time_t(shell);
+    }
+
+    if(shell->sort_mode == SORT_BY_SIZE) {
+        mx_sort_by_Size(shell->ls_array);
+    } 
+    if(shell->sort_mode == SORT_DEFAULT) {
+        mx_sort_default(shell->ls_array);
+    }
+    
+}
 
 
 int mx_shell_execute(t_shell* shell) {
-    
+    sort_ls(shell);
+    mx_sort_default(shell->ls_array);
     print_ls_by_display_mode(shell);
 
     return 0; 

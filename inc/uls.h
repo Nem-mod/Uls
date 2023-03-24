@@ -13,12 +13,20 @@
 #include <time.h>
 #include <sys/ioctl.h>
 // #define VALID_FLAGS "ACGRSTaclmrtu1"
-#define VALID_FLAGS "Cl1"
+#define VALID_FLAGS "ACSlatuc1"
 
 #define DISPLAY_MODE_NONE 0
 #define DISPLAY_MODE_C 1 
 #define DISPLAY_MODE_1 2
 #define DISPLAY_MODE_l 3
+
+#define DISPLAY_TIME_MODE_DEFAULT 0 
+#define DISPLAY_TIME_MODE_c 1 
+#define DISPLAY_TIME_MODE_u 2
+
+#define SORT_DEFAULT 0 
+#define SORT_BY_SIZE 1 
+#define SORT_BY_TIME 2
 
 typedef struct s_date {
 
@@ -49,6 +57,7 @@ typedef struct s_element {
     t_date* access_date;
     t_date* modify_date;
     t_date* status_date;
+    t_date* date;
     bool isVisible;
 
 }               t_element;
@@ -62,6 +71,7 @@ typedef struct s_ls {
     t_element* elements;
     int total;
     int max_len_name;
+    t_size* max_element_size;
 
 }               t_ls;
 
@@ -72,6 +82,8 @@ typedef struct s_shell {
     int ls_count;
     t_ls** ls_array;
     int display_mode;
+    int display_time_mode;
+    int sort_mode;
 
 }              t_shell;
 
@@ -109,7 +121,7 @@ int mx_shell_execute(t_shell* shell);
 void mx_print_l(t_shell* shell);
 void mx_print_C(t_shell* shell);
 void mx_print_one_col(t_ls** ls_array);
-
+void mx_print_nspace(int count);
 
 // SORTING
 
