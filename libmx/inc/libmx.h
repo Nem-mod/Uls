@@ -97,7 +97,8 @@ char *mx_replace_substr(const char *str, const char *sub, const char *replace);
 int mx_read_line(char **lineptr, size_t buf_size, char delim, const int fd);
 char **mx_create_char_arr(int number);
 int mx_get_size_array_of_strings(char** arr);
-
+char* mx_to_lower_case(char *str);
+int mx_strcmp_lower_case(const char *s1, const char *s2) ;
 /*
 **********MEM_PACK**********
 */

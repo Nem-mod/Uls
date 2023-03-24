@@ -6,7 +6,7 @@ int mx_sort_default(t_ls** ls_array) {
         t_element temp;
         for (i = 0; i < ls_array[k]->elements_count - 1; i++) {
             for (j = 0; j < ls_array[k]->elements_count - i - 1; j++) {
-                if (mx_strcmp(ls_array[k]->elements[j].name, ls_array[k]->elements[j + 1].name) > 0) {
+                if (mx_strcmp_lower_case((ls_array[k]->elements[j].name), (ls_array[k]->elements[j + 1].name)) > 0) {
                     temp = ls_array[k]->elements[j];
                     ls_array[k]->elements[j] = ls_array[k]->elements[j + 1];
                     ls_array[k]->elements[j + 1] = temp;
