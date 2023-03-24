@@ -118,7 +118,7 @@ int mx_open_dir(t_shell* shell);
 int mx_shell_execute(t_shell* shell);
 
 // PRINT
-void mx_print_l(t_shell* shell);
+void mx_print_l(t_shell* shell, int time_flag);
 void mx_print_C(t_shell* shell);
 void mx_print_one_col(t_ls** ls_array);
 void mx_print_nspace(int count);

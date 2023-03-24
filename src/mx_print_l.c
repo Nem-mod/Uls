@@ -1,6 +1,8 @@
 #include "uls.h"
 
-void mx_print_l(t_shell* shell) {
+
+
+void mx_print_l(t_shell* shell, int time_flag) {
     t_ls** ls_array = shell->ls_array;
     for (int i = 0;  i < shell->ls_count; i++) {
         if (shell->ls_count != 1) {
@@ -15,6 +17,7 @@ void mx_print_l(t_shell* shell) {
         for (int k = 0; k < ls_array[i]->elements_count; k++) {
             if (!ls_array[i]->elements[k].isVisible)
                 continue;
+            
             mx_printstr(ls_array[i]->elements[k].permission);
             mx_print_nspace(2);
             mx_printint(ls_array[i]->elements[k].links);
@@ -25,7 +28,20 @@ void mx_print_l(t_shell* shell) {
             mx_print_nspace(max_element_size_len - mx_strlen(mx_itoa(shell->ls_array[i]->elements[k].size->size)) + 2);
             mx_printint(ls_array[i]->elements[k].size->size);
             mx_print_nspace(2);
-            mx_printstr(ls_array[i]->elements[k].modify_date->long_date);  // according to flags
+
+            switch (time_flag) { // according to flags
+            case DISPLAY_TIME_MODE_DEFAULT:
+                mx_printstr(ls_array[i]->elements[k].modify_date->long_date);
+                break;
+            case DISPLAY_TIME_MODE_u:
+                mx_printstr(ls_array[i]->elements[k].access_date->long_date);
+                break;
+            case DISPLAY_TIME_MODE_c:
+                mx_printstr(ls_array[i]->elements[k].status_date->long_date);
+                break;
+            
+            }
+            
             mx_print_nspace(2);
             mx_printstr(ls_array[i]->elements[k].name);
             mx_printchar('\n');
