@@ -4,6 +4,7 @@ static void print_ls_by_display_mode(t_shell* shell) {
     if(shell->display_mode == DISPLAY_MODE_NONE && isatty(1) == 0) {
         mx_print_one_col(shell->ls_array);
     }
+    mx_sort_by_time_t(shell);
     if(shell->display_mode == DISPLAY_MODE_l) {
         mx_print_l(shell);
     }
