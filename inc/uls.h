@@ -33,6 +33,8 @@
 #define VISIBILITY_MODE_A 1
 #define VISIBILITY_MODE_vis 2
 
+#define TWO_TABS 8
+
 typedef struct s_date {
 
     char* long_date;
@@ -126,7 +128,7 @@ int mx_shell_execute(t_shell* shell);
 // PRINT
 void mx_print_l(t_shell* shell, int time_flag);
 void mx_print_C(t_shell* shell);
-void mx_print_one_col(t_ls** ls_array);
+void mx_print_one_col(t_shell* shell);
 void mx_print_nspace(int count);
 
 // SORTING

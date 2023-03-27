@@ -22,7 +22,7 @@ INC_FILES = $(wildcard $(INCLUDEDIR)/*.h)
 all: $(LBA) $(NAME) clean
 
 $(NAME): $(OBJ_FILES)
-	@$(COMP) $(CFLAGS) $(OBJ_FILES) -L$(LBMX) -lmx -o $@
+	@$(COMP) $(CFLAGS) $(OBJ_FILES) -L$(LBMX) -lmx -o $@ --debug
 
 $(OBJ_FILES): | $(OBJECTDIR)
 

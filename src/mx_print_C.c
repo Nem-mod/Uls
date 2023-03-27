@@ -3,8 +3,8 @@
 static void print_tab(int max_len, char *name) {
     int ntab = 0;
     int diff = max_len - mx_strlen(name);
-    ntab = diff / 8;
-    if (diff % 8 != 0) {
+    ntab = diff / TWO_TABS;
+    if (diff % TWO_TABS != 0) {
         ntab++;
     }
 
@@ -25,7 +25,7 @@ void mx_print_C(t_shell* shell){
             mx_printstr(":\n");   
         }
 
-        int col_w = (8) - (shell->ls_array[i]->max_len_name % (8)) + shell->ls_array[i]->max_len_name;
+        int col_w = (TWO_TABS) - (shell->ls_array[i]->max_len_name % (TWO_TABS)) + shell->ls_array[i]->max_len_name;
         int n_col = win.ws_col / col_w;
         int n_row = shell->ls_array[i]->elements_count / n_col;
 
@@ -36,14 +36,15 @@ void mx_print_C(t_shell* shell){
             for (int column = 0; column < n_col; column++) {
                 int index = row + (column * n_row);
                 if (index >= shell->ls_array[i]->max_len_name) 
-                continue;
-                
+                    continue;
+                if (index >= shell->ls_array[i]->elements_count)
+                    break;
+
                 if(shell->ls_array[i]->elements[index].name)
-                mx_printstr(shell->ls_array[i]->elements[index].name);
-                
+                    mx_printstr(shell->ls_array[i]->elements[index].name);
+
                 if (index + n_row < shell->ls_array[i]->max_len_name)
                     print_tab(col_w, shell->ls_array[i]->elements[index].name);
-
                 
             }
             mx_printchar('\n');
