@@ -11,5 +11,4 @@ int main(int argc, char* argv[]) {
 	mx_shell_execute(shell);
     
     return 0;
-	
 }

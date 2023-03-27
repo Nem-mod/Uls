@@ -38,10 +38,10 @@ void mx_print_C(t_shell* shell){
                     break;   
 
                 if(shell->ls_array[i]->elements[index].name)
-                    mx_printstr(shell->ls_array[i]->elements[index].name);
+                    mx_print_element_name(&ls_array[i]->elements[index], mx_strchr(shell->flags, 'G'));
 
                 if (column < n_col - 1)
-                    print_tab(col_w, shell->ls_array[i]->elements[index].name); 
+                    print_tab(col_w, ls_array[i]->elements[index].name); 
             }
             mx_printchar('\n');
         }

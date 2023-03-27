@@ -11,11 +11,7 @@ void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry) {
     stat(mx_strjoin(ls->path, element->name), &element_stat);     // Add error handle
     user_info = getpwuid(element_stat.st_uid);
     group_info = getgrgid(element_stat.st_gid);
-    ls->total += element_stat.st_blocks;
-    if (element->name[0] == '.')
-        element->isVisible = false;
-    else
-        element->isVisible = true;       
+    ls->total += element_stat.st_blocks;      
 
     element->permission = mx_get_element_permission(&element_stat);
     element->links = mx_get_element_links_number(&element_stat);

@@ -14,7 +14,7 @@
 #include <sys/ioctl.h>
 
 // #define VALID_FLAGS "ACGRSTaclmrtu1"
-#define VALID_FLAGS "ACSlatucfmp1"
+#define VALID_FLAGS "ACGSlatucfmp1"
 
 //  Display mode
 #define DISPLAY_MODE_NONE 0
@@ -22,6 +22,7 @@
 #define DISPLAY_MODE_1 2
 #define DISPLAY_MODE_l 3
 #define DISPLAY_MODE_m 5
+
 //  Display time mode
 #define DISPLAY_TIME_MODE_DEFAULT 0 
 #define DISPLAY_TIME_MODE_c 1 
@@ -71,7 +72,7 @@ typedef struct s_element {
     t_date* modify_date;
     t_date* status_date;
     t_date* date;
-    bool isVisible;
+    char* color;
 
 }               t_element;
 
@@ -132,6 +133,7 @@ void mx_print_C(t_shell* shell);
 void mx_print_one_col(t_shell* shell);
 void mx_print_nspace(int count);
 void mx_print_m(t_shell* shell);
+void mx_print_element_name(t_element* el, bool isColored);
 
 
 //  ==Sort==

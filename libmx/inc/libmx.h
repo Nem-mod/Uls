@@ -13,6 +13,10 @@
     #include <malloc/malloc.h>      // for MacOS -> malloc_size
 #endif
 
+#define COLOR_RED   "\033[31m"
+#define COLOR_BLUE  "\033[34m"
+#define COLOR_WHITE  "\033[0m"
+
 typedef struct s_list {
     void *data;
     struct s_list *next;
@@ -26,6 +30,7 @@ void mx_printerr(const char *s);
 void mx_printchar(char c);
 void mx_print_unicode(wchar_t c);
 void mx_printstr(const char* s);
+void mx_printstr_color(const char* s, const char* color);
 void mx_print_strarr(char **arr, const char *delim);
 void mx_printint(int n);
 
