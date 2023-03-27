@@ -15,9 +15,6 @@ void mx_print_l(t_shell* shell, int time_flag) {
         mx_printchar('\n');
     
         for (int k = 0; k < ls_array[i]->elements_count; k++) {
-            if (!ls_array[i]->elements[k].isVisible)
-                continue;
-            
             mx_printstr(ls_array[i]->elements[k].permission);
             mx_print_nspace(2);
             mx_printint(ls_array[i]->elements[k].links);
