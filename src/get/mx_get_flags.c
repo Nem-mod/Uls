@@ -17,8 +17,11 @@ char* mx_get_flags(int argc, char* argv[]){
 		if(argv[i][0] != '-')
 			continue;
 
-		for(int k = 1; k < mx_strlen(argv[i]); k++)
+		for(int k = 1; k < mx_strlen(argv[i]); k++) {
 			mx_add_flag(flags_string, argv[i][k]);
+			if (argv[i][k] == 'f')
+				mx_add_flag(flags_string, 'a');
+		}
   	}
 
     return flags_string;

@@ -1,7 +1,7 @@
 #include "uls.h"
 
 static void print_ls_by_display_mode(t_shell* shell) {
-    if(shell->display_mode == DISPLAY_MODE_NONE && isatty(1) == 0) {
+    if(shell->display_mode == DISPLAY_MODE_NONE && !isatty(1)) {
         mx_print_one_col(shell);
     }
     if(shell->display_mode == DISPLAY_MODE_l) {
