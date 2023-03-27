@@ -12,7 +12,7 @@ void mx_print_m(t_shell* shell) {
         for (int k = 0; k < ls_array[i]->elements_count; k++) {
             
             mx_printstr(ls_array[i]->elements[k].name);
-            if (k + 1  > ls_array[i]->elements_count) {
+            if (k + 1  < ls_array[i]->elements_count) {
                 mx_printchar(',');
             }
             mx_printchar(' ');
