@@ -14,14 +14,14 @@
 #include <sys/ioctl.h>
 
 // #define VALID_FLAGS "ACGRSTaclmrtu1"
-#define VALID_FLAGS "ACSlatucf1"
+#define VALID_FLAGS "ACSlatucfm1"
 
 //  Display mode
 #define DISPLAY_MODE_NONE 0
 #define DISPLAY_MODE_C 1 
 #define DISPLAY_MODE_1 2
 #define DISPLAY_MODE_l 3
-
+#define DISPLAY_MODE_m 5
 //  Display time mode
 #define DISPLAY_TIME_MODE_DEFAULT 0 
 #define DISPLAY_TIME_MODE_c 1 
@@ -131,6 +131,7 @@ void mx_print_l(t_shell* shell, int time_flag);
 void mx_print_C(t_shell* shell);
 void mx_print_one_col(t_shell* shell);
 void mx_print_nspace(int count);
+void mx_print_m(t_shell* shell);
 
 
 //  ==Sort==

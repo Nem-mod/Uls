@@ -9,6 +9,8 @@ static int get_last_entry_of_display_mode(char* flags) {
             mode = DISPLAY_MODE_1;
         if(flags[i] == 'C')
             mode = DISPLAY_MODE_C;
+        if(flags[i] == 'm')
+            mode = DISPLAY_MODE_m;
     }
     return mode;    
 }

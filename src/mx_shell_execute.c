@@ -15,6 +15,9 @@ static void print_ls_by_display_mode(t_shell* shell) {
     if(shell->display_mode == DISPLAY_MODE_1) {
         mx_print_one_col(shell);
     }
+    if(shell->display_mode == DISPLAY_MODE_m) {
+        mx_print_m(shell);
+    }
     
 }
 
