@@ -1,5 +1,13 @@
 #include "uls.h"
 
+static int get_number_of_digits(int number){
+    int i = 0;
+    while (number % 10 != 0) {
+        i++;
+        number = number / 10;
+    }
+    return i;
+}
 void mx_print_l(t_shell* shell, int time_flag) {
     t_ls** ls_array = shell->ls_array;
     for (int i = 0;  i < shell->ls_count; i++) {
@@ -14,7 +22,7 @@ void mx_print_l(t_shell* shell, int time_flag) {
     
         for (int k = 0; k < ls_array[i]->elements_count; k++) {
             mx_printstr(ls_array[i]->elements[k].permission);
-            mx_print_nspace(2);
+            mx_print_nspace(get_number_of_digits(ls_array[i]->max_links) - get_number_of_digits((int)ls_array[i]->elements[k].links) + 1);
             mx_printint(ls_array[i]->elements[k].links);
             mx_print_nspace(2);
             mx_printstr(ls_array[i]->elements[k].owner_name);

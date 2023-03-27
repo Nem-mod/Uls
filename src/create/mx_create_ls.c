@@ -45,6 +45,7 @@ t_ls* mx_create_ls(char* name, int visibility_mode){
     ls->max_len_name = 0;
     ls->total = 0;
     ls->max_element_size = NULL;
+    ls->max_links = 0;
     for (int i = 0; i < elements_count;) {
         entry = readdir(dir);
         switch (visibility_mode)
@@ -72,6 +73,10 @@ t_ls* mx_create_ls(char* name, int visibility_mode){
             ls->max_element_size = ls->elements[i].size;
         }
 
+        
+        if(ls->max_links < (int)ls->elements[i].links) {
+            ls->max_links  = ls->elements[i].links;
+        }
         i++;
     }
     closedir(dir);
