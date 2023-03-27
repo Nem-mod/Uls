@@ -14,7 +14,7 @@
 #include <sys/ioctl.h>
 
 // #define VALID_FLAGS "ACGRSTaclmrtu1"
-#define VALID_FLAGS "ACSlatucfm1"
+#define VALID_FLAGS "ACSlatucfmp1"
 
 //  Display mode
 #define DISPLAY_MODE_NONE 0
@@ -104,10 +104,10 @@ typedef struct s_shell {
 
 //  ==Create==
 t_shell* mx_create_shell(int argc, char* argv[]);
-t_ls* mx_create_ls(char* name, int visibility_mode);
+t_ls* mx_create_ls(char* name, int visibility_mode, char* flags);
 void mx_add_flag(char* flags_string, char flag);
 void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry);
-t_ls **mx_create_ls_array(int size, char** dirs, int vivisibility_mode);
+t_ls **mx_create_ls_array(int size, char** dirs, int vivisibility_mode, char* flags);
 
 
 //  ==Get==

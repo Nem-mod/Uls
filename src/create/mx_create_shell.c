@@ -63,6 +63,6 @@ t_shell* mx_create_shell(int argc, char* argv[]) {
     shell->sort_mode = get_sort_mode(shell->flags);
     shell->visibility_mode = get_visibility_mode(shell->flags);
     shell->ls_count = amount_of_dirs;
-    shell->ls_array = mx_create_ls_array(shell->ls_count, shell->dirs, shell->visibility_mode);
+    shell->ls_array = mx_create_ls_array(shell->ls_count, shell->dirs, shell->visibility_mode, shell->flags);
     return shell;
 }

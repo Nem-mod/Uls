@@ -1,6 +1,6 @@
 #include "uls.h"
 
-t_ls* mx_create_ls(char* name, int visibility_mode){
+t_ls* mx_create_ls(char* name, int visibility_mode, char* flags){
     t_ls* ls = malloc(sizeof(t_ls));
     int elements_count = 0;
     DIR* dir = opendir(name); 
@@ -62,6 +62,10 @@ t_ls* mx_create_ls(char* name, int visibility_mode){
             break;
         }
         mx_set_element_info(ls, &ls->elements[i], entry);
+
+        if(mx_strchr(flags, 'p') && ls->elements[i].permission[0] == 'd'){
+            ls->elements[i].name = mx_strjoin(ls->elements[i].name, "/");
+        }
 
         if(ls->max_len_name < mx_strlen(entry->d_name)) {
             ls->max_len_name = mx_strlen(entry->d_name);
