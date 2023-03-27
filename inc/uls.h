@@ -136,4 +136,3 @@ int mx_sort_by_Size(t_ls** ls_array);
 void mx_sort_by_time_c(t_shell* shell);
 void mx_sort_by_time_t(t_shell* shell);
 void mx_sort_by_time_u(t_shell* shell);
-
