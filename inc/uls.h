@@ -104,10 +104,10 @@ typedef struct s_shell {
 
 //  ==Create==
 t_shell* mx_create_shell(int argc, char* argv[]);
-t_ls* mx_create_ls(char* name, int visibility_mode, char* flags);
+t_ls* mx_create_ls(char* name, int visibility_mode);
 void mx_add_flag(char* flags_string, char flag);
 void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry);
-t_ls **mx_create_ls_array(int size, char** dirs, int vivisibility_mode, char* flags);
+t_ls **mx_create_ls_array(int size, char** dirs, int vivisibility_mode);
 
 
 //  ==Get==
@@ -145,3 +145,4 @@ void mx_sort_by_time_u(t_shell* shell);
 int mx_input_validation(int argc, char* argv[]);
 int mx_open_dir(t_shell* shell);
 int mx_shell_execute(t_shell* shell);
+void mx_join_p(t_shell* shell);
