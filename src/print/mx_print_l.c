@@ -1,7 +1,5 @@
 #include "uls.h"
 
-
-
 void mx_print_l(t_shell* shell, int time_flag) {
     t_ls** ls_array = shell->ls_array;
     for (int i = 0;  i < shell->ls_count; i++) {

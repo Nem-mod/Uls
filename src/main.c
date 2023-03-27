@@ -1,7 +1,5 @@
 #include "uls.h"
 
-// TEST COMMENT
-
 int main(int argc, char* argv[]) {
     int err_flag = mx_input_validation(argc, argv);
 
@@ -15,4 +13,3 @@ int main(int argc, char* argv[]) {
     return 0;
 	
 }
-
