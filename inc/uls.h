@@ -105,6 +105,7 @@ typedef struct s_flags {
     bool m;
     bool p;
     bool one;
+    bool T;
 
 }               t_flags;
 

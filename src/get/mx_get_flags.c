@@ -76,6 +76,10 @@ void mx_add_flag(t_flags* flags, char flag){
 		flags->C = false;
 		return;
 	}
+	if (flag == 'T') {
+		flags->T = true;
+		return;
+	}
 }
 
 t_flags* mx_get_flags(int argc, char* argv[]){

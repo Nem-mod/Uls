@@ -36,30 +36,29 @@ void mx_print_l(t_shell* shell, int time_flag) {
 
             mx_printint(ls_array[i]->elements[k].size->size);
             mx_print_nspace(1);
+
             switch (time_flag) { // according to flags
                 case DISPLAY_TIME_MODE_DEFAULT:
-                    if(mx_strchr(shell->flags, 'T')) 
+                    if(shell->flags->T) 
                         mx_printstr(ls_array[i]->elements[k].modify_date->long_date);
                     else 
                         mx_printstr(ls_array[i]->elements[k].modify_date->short_date);
                     break;
                 case DISPLAY_TIME_MODE_u:
-                    if(mx_strchr(shell->flags, 'T')) 
+                    if(shell->flags->T) 
                         mx_printstr(ls_array[i]->elements[k].access_date->long_date);
                     else 
                         mx_printstr(ls_array[i]->elements[k].access_date->short_date);
                     break;
                 case DISPLAY_TIME_MODE_c:
-                     if(mx_strchr(shell->flags, 'T')) 
+                    if(shell->flags->T) 
                         mx_printstr(ls_array[i]->elements[k].status_date->long_date);
                     else 
                         mx_printstr(ls_array[i]->elements[k].status_date->short_date);
                     break;
             }
-
-          
-            
             mx_print_nspace(1);
+
             mx_print_element_name(&ls_array[i]->elements[k], shell->flags->G);
             mx_printchar('\n');
         }
