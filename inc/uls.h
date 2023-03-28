@@ -90,27 +90,27 @@ typedef struct s_ls {
 
 }               t_ls;
 
-// typedef struct s_flags {
+typedef struct s_flags {
     
-//     bool A;
-//     bool C;
-//     bool G;
-//     bool S;
-//     bool l;
-//     bool a;
-//     bool t;
-//     bool u;
-//     bool c;
-//     bool f;
-//     bool m;
-//     bool p;
-//     bool one;
+    bool A;
+    bool C;
+    bool G;
+    bool S;
+    bool l;
+    bool a;
+    bool t;
+    bool u;
+    bool c;
+    bool f;
+    bool m;
+    bool p;
+    bool one;
 
-// }               t_flags;
+}               t_flags;
 
 typedef struct s_shell {
 
-    char* flags;
+    t_flags* flags;
     char** dirs;
     int ls_count;
     t_ls** ls_array;
@@ -124,13 +124,14 @@ typedef struct s_shell {
 //  ==Create==
 t_shell* mx_create_shell(int argc, char* argv[]);
 t_ls* mx_create_ls(char* name, int visibility_mode);
-void mx_add_flag(char* flags_string, char flag);
+void mx_add_flag(t_flags* flags, char flag);
 void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry);
 t_ls **mx_create_ls_array(int size, char** dirs, int vivisibility_mode);
+t_flags* mx_init_empty_flags();
 
 
 //  ==Get==
-char* mx_get_flags(int argc, char* argv[]);
+t_flags* mx_get_flags(int argc, char* argv[]);
 char** mx_get_dirs(int argc, char* argv[]);
 char* mx_get_ls_path(char* name);
 char* mx_get_element_name(struct dirent* entry);

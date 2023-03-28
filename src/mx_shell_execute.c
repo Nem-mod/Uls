@@ -50,7 +50,7 @@ static void sort_ls(t_shell* shell) {
 
 int mx_shell_execute(t_shell* shell) {
     sort_ls(shell);
-    if(mx_strchr(shell->flags, 'p')){
+    if(shell->flags->p){
         mx_join_p(shell);
     }
     print_ls_by_display_mode(shell);

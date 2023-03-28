@@ -60,7 +60,7 @@ void mx_print_l(t_shell* shell, int time_flag) {
           
             
             mx_print_nspace(1);
-            mx_print_element_name(&ls_array[i]->elements[k], mx_strchr(shell->flags, 'G'));
+            mx_print_element_name(&ls_array[i]->elements[k], shell->flags->G);
             mx_printchar('\n');
         }
 
