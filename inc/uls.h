@@ -14,7 +14,7 @@
 #include <sys/ioctl.h>
 
 // #define VALID_FLAGS "ACGRSTaclmrtu1"
-#define VALID_FLAGS "ACGSlatucfmp1"
+#define VALID_FLAGS "ACGSTlatucfmp1"
 
 //  Display mode
 #define DISPLAY_MODE_NONE 0
