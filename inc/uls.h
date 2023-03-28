@@ -14,7 +14,7 @@
 #include <sys/ioctl.h>
 
 // #define VALID_FLAGS "ACGRSTaclmrtu1"
-#define VALID_FLAGS "ACGSTlatucfmp1"
+#define VALID_FLAGS "ACGSTlatrucfmp1"
 
 //  Display mode
 #define DISPLAY_MODE_NONE 0
@@ -106,6 +106,7 @@ typedef struct s_flags {
     bool p;
     bool one;
     bool T;
+    bool r;
 
 }               t_flags;
 
@@ -162,6 +163,7 @@ int mx_sort_by_Size(t_ls** ls_array);
 void mx_sort_by_time_c(t_shell* shell);
 void mx_sort_by_time_t(t_shell* shell);
 void mx_sort_by_time_u(t_shell* shell);
+void mx_sort_reverse(t_shell* shell);
 
 //  ==Other==
 int mx_input_validation(int argc, char* argv[]);
