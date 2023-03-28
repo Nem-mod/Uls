@@ -27,6 +27,7 @@
 #define DISPLAY_TIME_MODE_DEFAULT 0 
 #define DISPLAY_TIME_MODE_c 1 
 #define DISPLAY_TIME_MODE_u 2
+#define SIX_MONTH_SEC 15778476
 
 //  Sort mode
 #define SORT_DEFAULT 0 
@@ -85,10 +86,27 @@ typedef struct s_ls {
     int total;
     int max_len_name;
     int max_links;
-
     t_size* max_element_size;
 
 }               t_ls;
+
+// typedef struct s_flags {
+    
+//     bool A;
+//     bool C;
+//     bool G;
+//     bool S;
+//     bool l;
+//     bool a;
+//     bool t;
+//     bool u;
+//     bool c;
+//     bool f;
+//     bool m;
+//     bool p;
+//     bool one;
+
+// }               t_flags;
 
 typedef struct s_shell {
 
