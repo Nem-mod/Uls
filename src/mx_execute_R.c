@@ -27,10 +27,16 @@ void mx_execute_R(t_flags* flags, char** dirs) {
                 mx_execute_R(shell->flags, tarr);
                 mx_del_strarr(&tarr);
             } 
-            else continue;
+           
+            
             
         }
         mx_del_strarr(&arr);
+
+       
         d++;
+        if(dirs[d] != NULL) {
+            mx_printstr("\n");
+        }
     }
 }
