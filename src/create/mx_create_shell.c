@@ -80,12 +80,12 @@ static int get_visibility_mode(t_flags* flags) {
     return VISIBILITY_MODE_vis;
 }
 
-t_shell* mx_create_shell(int argc, char* argv[]) {
+t_shell* mx_create_shell(t_flags* flags, char** dirs) {
     t_shell* shell = malloc(sizeof(t_shell));
     int amount_of_dirs;
     
-    shell->flags = mx_get_flags(argc, argv);
-    shell->dirs = mx_get_dirs(argc, argv);
+    shell->flags = flags;
+    shell->dirs = dirs;
     amount_of_dirs = mx_get_size_array_of_strings(shell->dirs);
     
     shell->display_mode = get_last_entry_of_display_mode(shell->flags);

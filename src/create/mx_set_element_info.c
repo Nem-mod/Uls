@@ -1,5 +1,12 @@
 #include "uls.h"
 
+static bool is_directory(const char *path) {
+   struct stat statbuf;
+   if (stat(path, &statbuf) != 0)
+       return 0;
+   return S_ISDIR(statbuf.st_mode);
+}
+
 void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry) {
     struct stat element_stat;
     struct passwd* user_info; // Add error handle 
@@ -24,4 +31,5 @@ void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry) {
     element->modify_date->int_nanosec_date = element_stat.st_mtime;
     element->status_date = mx_get_element_date(element_stat.st_ctime);
     element->status_date->int_nanosec_date = element_stat.st_ctime;
+    element->is_dir = is_directory(element->path);
 }

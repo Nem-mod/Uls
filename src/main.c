@@ -6,8 +6,16 @@ int main(int argc, char* argv[]) {
 	if (err_flag != 0) {
         return -1;
     }
-	t_shell* shell = mx_create_shell(argc, argv);
-	
+
+    t_flags* flags = mx_get_flags(argc, argv);
+    char** dirs = mx_get_dirs(argc, argv);
+    
+    if (flags->R) {
+        mx_execute_R(flags, dirs); 
+        return 0;
+    }
+    
+	t_shell* shell = mx_create_shell(mx_get_flags(argc, argv), mx_get_dirs(argc, argv));
 	mx_shell_execute(shell);
     
     return 0;

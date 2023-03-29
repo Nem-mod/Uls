@@ -80,6 +80,10 @@ void mx_add_flag(t_flags* flags, char flag){
 		flags->T = true;
 		return;
 	}
+	if (flag == 'R') {
+		flags->R = true;
+		return;
+	}
 }
 
 t_flags* mx_get_flags(int argc, char* argv[]){

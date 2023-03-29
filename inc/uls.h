@@ -14,7 +14,7 @@
 #include <sys/ioctl.h>
 
 // #define VALID_FLAGS "ACGRSTaclmrtu1"
-#define VALID_FLAGS "ACGSTlatucfmp1"
+#define VALID_FLAGS "ACGSTRlatucfmp1"
 
 //  Display mode
 #define DISPLAY_MODE_NONE 0
@@ -74,6 +74,7 @@ typedef struct s_element {
     t_date* status_date;
     t_date* date;
     char* color;
+    bool is_dir;
 
 }               t_element;
 
@@ -106,6 +107,7 @@ typedef struct s_flags {
     bool p;
     bool one;
     bool T;
+    bool R;
 
 }               t_flags;
 
@@ -123,7 +125,7 @@ typedef struct s_shell {
 }              t_shell;
 
 //  ==Create==
-t_shell* mx_create_shell(int argc, char* argv[]);
+t_shell* mx_create_shell(t_flags* flags, char** dirs);
 t_ls* mx_create_ls(char* name, int visibility_mode);
 void mx_add_flag(t_flags* flags, char flag);
 void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry);
@@ -168,3 +170,6 @@ int mx_input_validation(int argc, char* argv[]);
 int mx_open_dir(t_shell* shell);
 int mx_shell_execute(t_shell* shell);
 void mx_join_p(t_shell* shell);
+
+
+void mx_execute_R(t_flags* flags, char** dirs);
