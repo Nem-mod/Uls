@@ -17,6 +17,8 @@ t_flags* mx_init_empty_flags() {
     flags->p = false;
     flags->one = false;
     flags->T = false;
+    flags->t = false;
+    flags->r = false;
 
     return flags;
 }

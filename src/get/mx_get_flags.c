@@ -82,6 +82,9 @@ void mx_add_flag(t_flags* flags, char flag){
 	}
 	if (flag == 'R') {
 		flags->R = true;
+	}
+	if (flag == 'r') {
+		flags->r = true;
 		return;
 	}
 }
