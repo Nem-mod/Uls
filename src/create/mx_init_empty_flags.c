@@ -1,7 +1,7 @@
 #include "uls.h"
 
 t_flags* mx_init_empty_flags() {
-    t_flags* flags = malloc(sizeof(flags));
+    t_flags* flags = malloc(sizeof(t_flags));
 
     flags->A = false;
     flags->C = false;
@@ -19,6 +19,7 @@ t_flags* mx_init_empty_flags() {
     flags->T = false;
     flags->t = false;
     flags->r = false;
+    flags->R = false;
 
     return flags;
 }
