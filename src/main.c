@@ -7,8 +7,8 @@ int main(int argc, char* argv[]) {
         return -1;
     }
     
-    // t_flags* flags = mx_get_flags(argc, argv);  // need free
-    // char** dirs = mx_get_dirs(argc, argv);  // need free
+    t_flags* flags = mx_get_flags(argc, argv);  // need free
+    char** dirs = mx_get_dirs(argc, argv);  // need free
 
     // if (flags->R) {
     //     mx_execute_R(flags, dirs); 

@@ -7,6 +7,8 @@ char* mx_get_ls_path(char* name) {
     if(name[0] == '/' || name[0] == '.') {
         temp = mx_strdup(name);
         path = mx_strjoin(temp, "/");
+        mx_strdel(&temp);
+        
         return  path;
     }
 
