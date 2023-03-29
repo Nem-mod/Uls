@@ -8,8 +8,10 @@ void mx_execute_R(t_flags* flags, char** dirs) {
         *arr = mx_strdup(dirs[d]);
         arr[1] = NULL;
         t_shell* shell = mx_create_shell(flags, arr);
-        mx_printstr(*arr);
-        mx_printstr(":\n");
+        if(dirs[1] != NULL) {
+            mx_printstr(dirs[d]);
+            mx_printstr(":\n");
+        }
 	    mx_shell_execute(shell);
         
 
@@ -20,13 +22,21 @@ void mx_execute_R(t_flags* flags, char** dirs) {
                 char** tarr = malloc(sizeof(char*));
                 tarr[0] = temp;
                 tarr[1] = NULL;
+                mx_printstr(temp);
+                mx_printstr(":\n");
                 mx_execute_R(shell->flags, tarr);
                 mx_del_strarr(&tarr);
             } 
-            else continue;
+           
+            
             
         }
         mx_del_strarr(&arr);
+
+       
         d++;
+        if(dirs[d] != NULL) {
+            mx_printstr("\n");
+        }
     }
 }
