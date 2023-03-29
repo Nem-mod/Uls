@@ -8,8 +8,8 @@ char* mx_get_ls_path(char* name) {
         return  mx_strjoin(name, "/");
     }
 
-    temp = mx_strjoin("./", name);
-    path = mx_strjoin(temp, "/");
+    //temp = mx_strjoin("./", name);
+    path = mx_strjoin(name, "/");
     mx_strdel(&temp);
 
     return path;
