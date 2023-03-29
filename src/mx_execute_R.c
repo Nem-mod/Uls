@@ -8,7 +8,10 @@ void mx_execute_R(t_flags* flags, char** dirs) {
         *arr = mx_strdup(dirs[d]);
         arr[1] = NULL;
         t_shell* shell = mx_create_shell(flags, arr);
-        
+        if(dirs[1] != NULL) {
+            mx_printstr(dirs[d]);
+            mx_printstr(":\n");
+        }
 	    mx_shell_execute(shell);
         
 
