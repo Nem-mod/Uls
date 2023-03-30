@@ -6,9 +6,8 @@ int mx_input_validation(int argc, char* argv[]) {
 	if(argc == 1) 
 		return 0;
 
-	for(int i = 1; i < argc; i++) {	// Add dir validation!!!
+	for(int i = 1; i < argc; i++) {
 		if(argv[i][0] != '-'){
-
 			continue;
 		}
 				

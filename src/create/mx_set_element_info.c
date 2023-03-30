@@ -1,10 +1,10 @@
 #include "uls.h"
 
 static bool is_directory(const char *path) {
-   struct stat statbuf;
-   if (stat(path, &statbuf) != 0)
-       return 0;
-   return S_ISDIR(statbuf.st_mode);
+    struct stat statbuf;
+   if (lstat(path, &statbuf) != 0)
+        return 0;
+    return S_ISDIR(statbuf.st_mode);
 }
 
 void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry) {
@@ -17,7 +17,11 @@ void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry) {
     element->path = mx_get_element_path(ls, entry);
 
     temp = mx_strjoin(ls->path, element->name);
-    stat(temp, &element_stat);
+    if (lstat(temp, &element_stat)) {
+        perror("uls: ");
+        element = NULL;
+        return;
+    }
     mx_strdel(&temp);
 
     user_info = getpwuid(element_stat.st_uid);

@@ -10,10 +10,10 @@ int main(int argc, char* argv[]) {
     t_flags* flags = mx_get_flags(argc, argv);  // need free
     char** dirs = mx_get_dirs(argc, argv);  // need free
 
-    // if (flags->R) {
-    //     mx_execute_R(flags, dirs); 
-    //     return 0;
-    // }
+    if (flags->R) {
+        mx_execute_R(flags, dirs); 
+        return 0;
+    }
     
 	t_shell* shell = mx_create_shell(flags, dirs);
 	mx_shell_execute(shell);

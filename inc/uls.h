@@ -148,6 +148,7 @@ char* mx_get_element_group_name(struct group* group_info);
 t_size* mx_get_element_size(struct stat* stat);
 t_date* mx_get_element_date(time_t element_time);
 char* mx_get_element_color(char* permission);
+char* mx_get_element_type(mode_t mode);
 
 
 //  ==Print==
