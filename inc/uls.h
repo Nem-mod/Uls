@@ -87,6 +87,7 @@ typedef struct s_ls {
     int total;
     int max_len_name;
     int max_links;
+    int max_o_name;
     t_size* max_element_size;
 
 }               t_ls;
