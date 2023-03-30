@@ -12,7 +12,8 @@ SOURCEDIR 	=	src \
 				src/create \
 				src/get \
 				src/print \
-				src/sort
+				src/sort \
+				src/free
 OBJECTDIR	=	obj
 INCLUDEDIR	=	inc
 

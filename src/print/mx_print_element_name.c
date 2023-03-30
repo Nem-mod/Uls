@@ -1,13 +1,8 @@
 #include "uls.h"
 
-void mx_print_element_name(t_element* el, bool isColored) {
-    if (isColored && isatty(1)) {
-        if (el->permission[0] == 'd')
-            mx_printstr_color(el->name, COLOR_BLUE);
-        else if (el->permission[3] == 'x')
-            mx_printstr_color(el->name, COLOR_RED);
-        else
-            mx_printstr_color(el->name, COLOR_WHITE);
-    } else
-        mx_printstr(el->name);       
+void mx_print_element_name(t_element* element, bool isColored) {
+    if (isColored)
+        mx_printstr_color(element->name, element->color);
+    else
+        mx_printstr_color(element->name, NULL);
 }

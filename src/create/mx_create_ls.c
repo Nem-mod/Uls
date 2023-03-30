@@ -13,12 +13,11 @@ t_ls* mx_create_ls(char* name, int visibility_mode){
     ls->path = mx_get_ls_path(name);
 
     entry = readdir(dir);
-    while (entry != NULL) {
-        
+    while (entry != NULL) { 
         switch (visibility_mode)
         {
         case VISIBILITY_MODE_vis:
-            if(mx_get_element_name(entry)[0] == '.') {
+            if(entry->d_name[0] == '.') {
                 entry = readdir(dir);
                 continue;
             }
@@ -52,7 +51,7 @@ t_ls* mx_create_ls(char* name, int visibility_mode){
         switch (visibility_mode)
         {
         case VISIBILITY_MODE_vis:
-            if(mx_get_element_name(entry)[0] == '.')
+            if(entry->d_name[0] == '.')
                 continue;
             break;
         

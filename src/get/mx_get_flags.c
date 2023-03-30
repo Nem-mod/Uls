@@ -102,7 +102,3 @@ t_flags* mx_get_flags(int argc, char* argv[]){
 
     return flags;
 }
-
-void mx_sort_flags(char* flags);
-
-void mx_del_flags_copy(char* flags);

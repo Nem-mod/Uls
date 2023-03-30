@@ -11,11 +11,15 @@ void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry) {
     struct stat element_stat;
     struct passwd* user_info; // Add error handle 
     struct group* group_info; // Add error handle
+    char* temp;
 
     element->name = mx_get_element_name(entry);
     element->path = mx_get_element_path(ls, entry);
 
-    stat(mx_strjoin(ls->path, element->name), &element_stat);     // Add error handle
+    temp = mx_strjoin(ls->path, element->name);
+    stat(temp, &element_stat);
+    mx_strdel(&temp);
+
     user_info = getpwuid(element_stat.st_uid);
     group_info = getgrgid(element_stat.st_gid);
     ls->total += element_stat.st_blocks;      
@@ -31,5 +35,6 @@ void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry) {
     element->modify_date->int_nanosec_date = element_stat.st_mtime;
     element->status_date = mx_get_element_date(element_stat.st_ctime);
     element->status_date->int_nanosec_date = element_stat.st_ctime;
+    element->color = mx_get_element_color(element->permission);
     element->is_dir = is_directory(element->path);
 }

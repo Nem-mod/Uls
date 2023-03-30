@@ -1,6 +1,5 @@
 {
     "files.associations": {
-        "uls.h": "c",
-        "ioctl.h": "c"
+        "typeinfo": "c"
     }
 }

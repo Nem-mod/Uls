@@ -18,11 +18,10 @@ char** mx_get_dirs(int argc, char* argv[]){
 		k++;
 	}
 	array_of_ex_dirictories[k] = NULL;
-	if (k == 0 && e == 0) {
+	if (k == 0)
 		array_of_ex_dirictories[0] = mx_strdup(".");
-	}
 	
-	mx_bubble_sort(array_of_ex_dirictories, k); // Refactor for -f flag!!!
+	mx_bubble_sort(array_of_ex_dirictories, k);
 	
 	return array_of_ex_dirictories;
 }

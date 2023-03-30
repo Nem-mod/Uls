@@ -45,8 +45,8 @@
 
 typedef struct s_date {
 
-    char* long_date;
-    char* short_date;
+    char* long_date; // freed
+    char* short_date; // freed
     time_t int_sec_date;
     long int_nanosec_date;
 
@@ -55,35 +55,34 @@ typedef struct s_date {
 typedef struct s_size {
     
     int size;
-    char* short_size;
-    char* full_size;
+    char* short_size; // freed
+    char* full_size; // freed
 
 }               t_size;
 
 typedef struct s_element {
 
-    char* name;
-    char* path;
-    char* permission;
+    char* name; // freed
+    char* path; // freed
+    char* permission; // freed
     nlink_t links;
-    char* owner_name;
-    char* group_name;
-    t_size* size;
-    t_date* access_date;
-    t_date* modify_date;
-    t_date* status_date;
-    t_date* date;
-    char* color;
+    char* owner_name; // freed
+    char* group_name; // freed
+    t_size* size; // freed
+    t_date* access_date; // freed
+    t_date* modify_date; // freed
+    t_date* status_date; // freed
+    char* color; // freed
     bool is_dir;
 
 }               t_element;
 
 typedef struct s_ls {
     
-    char* name;
-    char* path;
+    char* name; // freed
+    char* path; // freed
     int elements_count;
-    t_element* elements;
+    t_element* elements; // change to array of pointers!!!   // freed
     int total;
     int max_len_name;
     int max_links;
@@ -115,10 +114,10 @@ typedef struct s_flags {
 
 typedef struct s_shell {
 
-    t_flags* flags;
-    char** dirs;
+    t_flags* flags; // freed
+    char** dirs; // freed
     int ls_count;
-    t_ls** ls_array;
+    t_ls** ls_array; // freed
     int display_mode;
     int display_time_mode;
     int sort_mode;
@@ -147,6 +146,7 @@ char* mx_get_element_owner_name(struct passwd* user_info);
 char* mx_get_element_group_name(struct group* group_info);
 t_size* mx_get_element_size(struct stat* stat);
 t_date* mx_get_element_date(time_t element_time);
+char* mx_get_element_color(char* permission);
 
 
 //  ==Print==
@@ -167,6 +167,13 @@ void mx_sort_by_time_c(t_shell* shell);
 void mx_sort_by_time_t(t_shell* shell);
 void mx_sort_by_time_u(t_shell* shell);
 void mx_sort_reverse(t_shell* shell);
+
+// ==Free==
+void mx_free_shell(t_shell **shell);
+void mx_free_ls(t_ls **ls);
+void mx_free_element(t_element *element);
+void mx_free_size(t_size **size);
+void mx_free_date(t_date **date);
 
 //  ==Other==
 int mx_input_validation(int argc, char* argv[]);
