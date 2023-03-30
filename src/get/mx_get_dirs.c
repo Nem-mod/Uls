@@ -3,13 +3,14 @@
 char** mx_get_dirs(int argc, char* argv[]){
 	char** array_of_ex_dirictories = mx_create_char_arr(argc);
 	int k = 0;
-
+	int e = 0;
 	for(int i = 1; i < argc; i++) {
 		if(argv[i][0] == '-')
 			continue;
 		
 		if(opendir(argv[i]) == NULL) {
 			mx_print_dir_err(argv[i]);
+			e++;
 			continue;
 		}
 		
@@ -17,7 +18,7 @@ char** mx_get_dirs(int argc, char* argv[]){
 		k++;
 	}
 	array_of_ex_dirictories[k] = NULL;
-	if (k == 0) {
+	if (k == 0 && e == 0) {
 		array_of_ex_dirictories[0] = mx_strdup(".");
 	}
 	
