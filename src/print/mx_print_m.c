@@ -11,7 +11,7 @@ void mx_print_m(t_shell* shell) {
 
         for (int k = 0; k < ls_array[i]->elements_count; k++) {
             
-            mx_print_element_name(&ls_array[i]->elements[k], shell->flags->G);
+            mx_print_element_name(ls_array[i]->elements[k], shell->flags->G);
             // mx_printstr_color(ls_array[i]->elements[k].name, ls_array[i]->elements[k].color);
             if (k + 1  < ls_array[i]->elements_count) {
                 mx_printchar(',');

@@ -82,7 +82,7 @@ typedef struct s_ls {
     char* name; // freed
     char* path; // freed
     int elements_count;
-    t_element* elements; // change to array of pointers!!!   // freed
+    t_element** elements; // change to array of pointers!!!   // freed
     int total;
     int max_len_name;
     int max_links;
@@ -173,7 +173,7 @@ void mx_sort_reverse(t_shell* shell);
 // ==Free==
 void mx_free_shell(t_shell **shell);
 void mx_free_ls(t_ls **ls);
-void mx_free_element(t_element *element);
+void mx_free_element(t_element **element);
 void mx_free_size(t_size **size);
 void mx_free_date(t_date **date);
 

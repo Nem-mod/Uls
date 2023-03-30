@@ -10,7 +10,7 @@ void mx_print_one_col(t_shell* shell) {
             mx_printstr(":\n");   
         }
         for (int i = 0; i < ls_array[k]->elements_count; i++) {
-            mx_print_element_name(&ls_array[k]->elements[i], shell->flags->G);
+            mx_print_element_name(ls_array[k]->elements[i], shell->flags->G);
             // mx_printstr_color(ls_array[k]->elements[i].name, ls_array[k]->elements[i].color);
             mx_printchar('\n');
         }        

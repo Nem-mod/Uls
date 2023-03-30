@@ -16,9 +16,9 @@ void mx_execute_R(t_flags* flags, char** dirs) {
         
 
         for (int i = 0; i < shell->ls_array[0]->elements_count; i++) {
-            if (shell->ls_array[0]->elements[i].is_dir) {
+            if (shell->ls_array[0]->elements[i]->is_dir) {
                 mx_printstr("\n");
-                char* temp = mx_strdup(shell->ls_array[0]->elements[i].path);
+                char* temp = mx_strdup(shell->ls_array[0]->elements[i]->path);
                 char** tarr = malloc(sizeof(char*));
                 tarr[0] = temp;
                 tarr[1] = NULL;

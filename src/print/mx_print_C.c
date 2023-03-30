@@ -37,12 +37,12 @@ void mx_print_C(t_shell* shell){
                 if (index >= shell->ls_array[i]->elements_count)
                     break;   
 
-                if(shell->ls_array[i]->elements[index].name)
-                    mx_print_element_name(&ls_array[i]->elements[index], shell->flags->G);
-                    // mx_printstr_color(ls_array[i]->elements[index].name, ls_array[i]->elements[index].color);
+                if(shell->ls_array[i]->elements[index]->name)
+                    mx_print_element_name(ls_array[i]->elements[index], shell->flags->G);
+                    // mx_printstr_color(ls_array[i]->elements[index]->name, ls_array[i]->elements[index]->color);
 
                 if (column < n_col - 1)
-                    print_tab(col_w, ls_array[i]->elements[index].name); 
+                    print_tab(col_w, ls_array[i]->elements[index]->name); 
             }
             mx_printchar('\n');
         }
