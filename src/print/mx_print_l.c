@@ -32,8 +32,9 @@ void mx_print_l(t_shell* shell, int time_flag) {
             mx_print_nspace(ls_array[i]->max_o_name - mx_strlen(ls_array[i]->elements[k].owner_name) + 2);
 
             mx_printstr(ls_array[i]->elements[k].group_name);
-            mx_print_nspace(max_element_size_len - mx_strlen(mx_itoa(shell->ls_array[i]->elements[k].size->size)) + 2);
+            mx_print_nspace(ls_array[i]->max_g_name - mx_strlen(ls_array[i]->elements[k].group_name));
 
+            mx_print_nspace(max_element_size_len - mx_strlen(mx_itoa(shell->ls_array[i]->elements[k].size->size)) + 2);
             mx_printint(ls_array[i]->elements[k].size->size);
             mx_print_nspace(1);
 
