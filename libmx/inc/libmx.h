@@ -16,6 +16,7 @@
 #define COLOR_RED   "\033[31m"
 #define COLOR_BLUE  "\033[34m"
 #define COLOR_WHITE  "\033[0m"
+#define COLOR_LIGHT_MAGENTA "\033[95m"
 
 typedef struct s_list {
     void *data;
@@ -55,6 +56,7 @@ bool mx_isspace(int c);
 unsigned long mx_hex_to_nbr(const char *hex);
 char *mx_nbr_to_hex(unsigned long nbr);
 int mx_intlen(int num);
+char* mx_hex_to_longhex(char* str);
 
 /*
 **********ALGO_PACK**********

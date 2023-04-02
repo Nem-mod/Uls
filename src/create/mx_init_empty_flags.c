@@ -20,6 +20,7 @@ t_flags* mx_init_empty_flags() {
     flags->t = false;
     flags->r = false;
     flags->R = false;
+    flags->dog = false;
 
     return flags;
 }

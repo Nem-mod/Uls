@@ -87,6 +87,10 @@ void mx_add_flag(t_flags* flags, char flag){
 		flags->r = true;
 		return;
 	}
+	if (flag == '@') {
+		flags->dog = true;
+		return;
+	}
 }
 
 t_flags* mx_get_flags(int argc, char* argv[]){

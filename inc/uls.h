@@ -12,9 +12,13 @@
 #include <grp.h>
 #include <time.h>
 #include <sys/ioctl.h>
+#include <sys/xattr.h>
+#include <sys/acl.h>
+
+#define MAX_LEN 1024
 
 // #define VALID_FLAGS "ACGRSTaclmrtu1"
-#define VALID_FLAGS "ACGSTRrlatucfmp1"
+#define VALID_FLAGS "ACGSTR@rlatucfmp1"
 
 //  Display mode
 #define DISPLAY_MODE_NONE 0
@@ -64,11 +68,16 @@ typedef struct s_element {
 
     char* name; // freed
     char* path; // freed
+    char* link_to; // freed
+    char* xattrs; 
+    bool isAcl;
     char* permission; // freed
     nlink_t links;
     char* owner_name; // freed
     char* group_name; // freed
     t_size* size; // freed
+    t_size* size_major;
+    t_size* size_minor;
     t_date* access_date; // freed
     t_date* modify_date; // freed
     t_date* status_date; // freed
@@ -82,12 +91,14 @@ typedef struct s_ls {
     char* name; // freed
     char* path; // freed
     int elements_count;
-    t_element** elements; // change to array of pointers!!!   // freed
+    t_element** elements; // freed
     int total;
     int max_len_name;
     int max_links;
     int max_o_name;
     int max_g_name;
+    int max_major;
+    int max_minor;
     t_size* max_element_size;
 
 }               t_ls;
@@ -110,6 +121,7 @@ typedef struct s_flags {
     bool T;
     bool r;
     bool R;
+    bool dog;
 
 }               t_flags;
 
@@ -141,15 +153,19 @@ char** mx_get_dirs(int argc, char* argv[]);
 char* mx_get_ls_path(char* name);
 char* mx_get_element_name(struct dirent* entry);
 char* mx_get_element_path(t_ls* ls, struct dirent* entry);
-char* mx_get_element_permission(struct stat* stat);
+char* mx_get_element_permission(struct stat* stat, char* xattrs, bool isAsl);
 nlink_t mx_get_element_links_number(struct stat* stat);
 char* mx_get_element_owner_name(struct passwd* user_info);
 char* mx_get_element_group_name(struct group* group_info);
 t_size* mx_get_element_size(struct stat* stat);
-t_date* mx_get_element_date(time_t element_time);
+t_date* mx_get_element_date(struct timespec* element_time);
 char* mx_get_element_color(char* permission);
 char* mx_get_element_type(mode_t mode);
-
+char* mx_get_element_name_link_to(char* path);
+char* mx_get_element_xattrs(char* path);
+bool mx_get_element_acl(char* path);
+t_size* mx_get_element_size_major(char* tempPath);
+t_size* mx_get_element_size_minor(char* tempPath);
 
 //  ==Print==
 void mx_print_usage(char err);
@@ -182,6 +198,4 @@ int mx_input_validation(int argc, char* argv[]);
 int mx_open_dir(t_shell* shell);
 int mx_shell_execute(t_shell* shell);
 void mx_join_p(t_shell* shell);
-
-
 void mx_execute_R(t_flags* flags, char** dirs);
