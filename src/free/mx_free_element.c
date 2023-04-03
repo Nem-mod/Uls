@@ -1,6 +1,8 @@
 #include "uls.h"
 
 void mx_free_element(t_element **element) {
+    if (*element == NULL)
+        return;
     mx_strdel(&(*element)->name);
     mx_strdel(&(*element)->path);
     mx_strdel(&(*element)->link_to);

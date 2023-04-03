@@ -40,7 +40,8 @@ void mx_print_C(t_shell* shell){
                 if(shell->ls_array[i]->elements[index]->name) 
                     mx_print_element_name(ls_array[i]->elements[index], shell->flags->G);
 
-                if (column < n_col - 1)
+                if (column < n_col - 1 && row + ((column + 1) * n_row) < shell->ls_array[i]->elements_count)
+                // if (column != n_col - 1)
                     print_tab(col_w, ls_array[i]->elements[index]->name); 
             }
             mx_printchar('\n');

@@ -142,7 +142,7 @@ typedef struct s_shell {
 t_shell* mx_create_shell(t_flags* flags, char** dirs);
 t_ls* mx_create_ls(char* name, int visibility_mode);
 void mx_add_flag(t_flags* flags, char flag);
-void mx_set_element_info(t_ls* ls, t_element* element, struct dirent* entry);
+void mx_set_element_info(t_ls* ls, t_element** element, struct dirent* entry);
 t_ls **mx_create_ls_array(int size, char** dirs, int vivisibility_mode);
 t_flags* mx_init_empty_flags();
 

@@ -9,7 +9,7 @@ static void print_ls_by_display_mode(t_shell* shell) {
     }
 
     if(shell->display_mode == DISPLAY_MODE_C 
-        || (shell->display_mode == DISPLAY_MODE_NONE && isatty(1))) {
+        || ((shell->display_mode == DISPLAY_MODE_NONE && isatty(1)))) {
         mx_print_C(shell);
     }
     if(shell->display_mode == DISPLAY_MODE_1) {

@@ -1,6 +1,5 @@
 #include "uls.h"
 
-// TODO: normal error handle
 int main(int argc, char* argv[]) {
     int err_flag = mx_input_validation(argc, argv);
 
@@ -8,7 +7,6 @@ int main(int argc, char* argv[]) {
         return -1;
     }
     
-    // TODO: free -R flag and this too
     t_flags* flags = mx_get_flags(argc, argv);  // need free
     char** dirs = mx_get_dirs(argc, argv);  // need free
 

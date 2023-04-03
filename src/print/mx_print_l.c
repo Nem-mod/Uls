@@ -12,13 +12,19 @@ static int get_number_of_digits(int number){
     return i;
 }
 
-// TODO: free mx_itoa
 void mx_print_l(t_shell* shell, int time_flag) {
     t_ls** ls_array = shell->ls_array;
+
     for (int i = 0;  i < shell->ls_count; i++) {
         if (shell->ls_count != 1) {
             mx_printstr(ls_array[i]->name);
             mx_printstr(":\n");   
+        }
+
+        if (shell->ls_array[i]->elements_count == 0) {
+            if (i != shell->ls_count - 1)
+                mx_printchar('\n');
+            continue;
         }
         int max_element_size_len = get_number_of_digits(shell->ls_array[i]->max_element_size->size);
         mx_printstr("total ");
@@ -26,6 +32,9 @@ void mx_print_l(t_shell* shell, int time_flag) {
         mx_printchar('\n');
     
         for (int k = 0; k < ls_array[i]->elements_count; k++) {
+            if (ls_array[i]->elements[k] == NULL)
+                continue;
+            
             mx_printstr(ls_array[i]->elements[k]->permission);
             mx_print_nspace(get_number_of_digits(ls_array[i]->max_links) - get_number_of_digits((int)ls_array[i]->elements[k]->links) +
                             2 - mx_strlen(ls_array[i]->elements[k]->permission) + 10);
@@ -95,6 +104,4 @@ void mx_print_l(t_shell* shell, int time_flag) {
         if (i != shell->ls_count - 1)
             mx_printchar('\n');
     }
-    
-   
 }

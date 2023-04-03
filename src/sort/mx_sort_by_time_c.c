@@ -8,7 +8,11 @@ void mx_sort_by_time_u(t_shell* shell) {
     
     for (int i = 0; i < shell->ls_count; i++) {
         for (int x = 0; x < ls_array[i]->elements_count - 1; x++) {
+            if (ls_array[i]->elements[x] == NULL)
+                    continue;
             for (int y = x + 1; y < ls_array[i]->elements_count; y++) {
+                if (ls_array[i]->elements[y] == NULL)
+                    continue;
                 first_date = ls_array[i]->elements[x]->access_date;
                 second_date = ls_array[i]->elements[y]->access_date;
 

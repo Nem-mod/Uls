@@ -16,7 +16,7 @@ char** mx_get_dirs(int argc, char* argv[]){
 		if(dir == NULL) {
 			mx_print_dir_err(argv[i]);
 			e++;
-			closedir(dir);
+			// closedir(dir);
 			continue;
 		}
 		

@@ -55,6 +55,7 @@ void mx_add_flag(t_flags* flags, char flag){
 		flags->S = false;
 		flags->t = false;
 		flags->f = true;
+		flags->r = false;
 		mx_add_flag(flags, 'a');
 		return;
 	}
@@ -84,7 +85,8 @@ void mx_add_flag(t_flags* flags, char flag){
 		flags->R = true;
 	}
 	if (flag == 'r') {
-		flags->r = true;
+		if (!flags->f)
+			flags->r = true;
 		return;
 	}
 	if (flag == '@') {
