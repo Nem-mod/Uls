@@ -12,6 +12,7 @@ static int get_number_of_digits(int number){
     return i;
 }
 
+// TODO: free mx_itoa
 void mx_print_l(t_shell* shell, int time_flag) {
     t_ls** ls_array = shell->ls_array;
     for (int i = 0;  i < shell->ls_count; i++) {
@@ -36,11 +37,7 @@ void mx_print_l(t_shell* shell, int time_flag) {
             mx_print_nspace(ls_array[i]->max_o_name - mx_strlen(ls_array[i]->elements[k]->owner_name) + 2);
 
             mx_printstr(ls_array[i]->elements[k]->group_name);
-            // mx_print_nspace(max_element_size_len - mx_strlen(mx_itoa(shell->ls_array[i]->elements[k]->size->size)) + 2);
             mx_print_nspace(ls_array[i]->max_g_name - mx_strlen(ls_array[i]->elements[k]->group_name));
-            // if (ls_array[i]->max_g_name - mx_strlen(ls_array[i]->elements[k]->group_name) != 0)
-            //     mx_print_nspace(2);
-            // mx_print_nspace(2);
             if (ls_array[i]->max_major > 0)
                 mx_print_nspace(get_number_of_digits(ls_array[i]->max_major) - get_number_of_digits(ls_array[i]->elements[k]->size_major->size) + 2);
 
@@ -55,11 +52,6 @@ void mx_print_l(t_shell* shell, int time_flag) {
                 if (ls_array[i]->max_major > 0) {
                     mx_print_nspace(get_number_of_digits(ls_array[i]->max_minor) - max_element_size_len + 1);
                 }
-                // if (ls_array[i]->elements[k]->size_minor->size < 256)
-                //     mx_print_nspace(get_number_of_digits(ls_array[i]->max_minor) - get_number_of_digits(ls_array[i]->elements[k]->size_minor->size));
-                // mx_print_nspace(get_number_of_digits(ls_array[i]->max_minor));
-                // mx_printint(ls_array[i]->elements[k]->size_major->size);
-                // mx_print_nspace(ls_array[i]->max_g_name - mx_strlen(ls_array[i]->elements[k]->group_name));
                 mx_print_nspace(max_element_size_len - get_number_of_digits(shell->ls_array[i]->elements[k]->size->size) + 2);
                 mx_printint(ls_array[i]->elements[k]->size->size);
                 mx_print_nspace(1);

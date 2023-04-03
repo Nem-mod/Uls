@@ -14,6 +14,8 @@ int main(int argc, char* argv[]) {
 
     if (flags->R) {
         mx_execute_R(flags, dirs); 
+        free(flags);
+        flags = NULL; 
         return 0;
     }
     

@@ -22,7 +22,6 @@ char* mx_get_element_permission(struct stat* stat, char* xattrs, bool isAsl) {
         mx_strcat(str, "x");
     else
         mx_strcat(str, "-");
-    // mx_strcat(str, ( ? "x" :  ? "t" : "-"));
     if (xattrs != NULL)
         mx_strcat(str, dog);
     else if (isAsl) 

@@ -7,8 +7,6 @@ t_size* mx_get_element_size_minor(char* tempPath) {
 
     lstat(tempPath, &element_stat);
     size->size = minor(element_stat.st_rdev);
-    // size->size = ((int)((stat->st_rdev) & 0xff));
-    // size->size = MINOR(stat->st_rdev);
     if (size->size < 256)
         size->short_size = mx_itoa(size->size);
     else {

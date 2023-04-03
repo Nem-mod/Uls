@@ -69,15 +69,15 @@ typedef struct s_element {
     char* name; // freed
     char* path; // freed
     char* link_to; // freed
-    char* xattrs; 
+    char* xattrs; // freed
     bool isAcl;
     char* permission; // freed
     nlink_t links;
     char* owner_name; // freed
     char* group_name; // freed
     t_size* size; // freed
-    t_size* size_major;
-    t_size* size_minor;
+    t_size* size_major; // freed
+    t_size* size_minor; // freed
     t_date* access_date; // freed
     t_date* modify_date; // freed
     t_date* status_date; // freed
