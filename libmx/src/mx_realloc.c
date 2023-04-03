@@ -15,7 +15,8 @@ void *mx_realloc(void *ptr, size_t size) {
 	#elif __APPLE__
    		ptr_size = malloc_size(ptr);			// For MacOS
 	#endif
-	
+
+
 	if (ptr_size > size)
 		size = ptr_size;
 

@@ -13,6 +13,11 @@
     #include <malloc/malloc.h>      // for MacOS -> malloc_size
 #endif
 
+#define COLOR_RED   "\033[31m"
+#define COLOR_BLUE  "\033[34m"
+#define COLOR_WHITE  "\033[0m"
+#define COLOR_LIGHT_MAGENTA "\033[95m"
+
 typedef struct s_list {
     void *data;
     struct s_list *next;
@@ -26,6 +31,7 @@ void mx_printerr(const char *s);
 void mx_printchar(char c);
 void mx_print_unicode(wchar_t c);
 void mx_printstr(const char* s);
+void mx_printstr_color(const char* s, const char* color);
 void mx_print_strarr(char **arr, const char *delim);
 void mx_printint(int n);
 
@@ -50,6 +56,7 @@ bool mx_isspace(int c);
 unsigned long mx_hex_to_nbr(const char *hex);
 char *mx_nbr_to_hex(unsigned long nbr);
 int mx_intlen(int num);
+char* mx_hex_to_longhex(char* str);
 
 /*
 **********ALGO_PACK**********
@@ -95,7 +102,10 @@ char *mx_file_to_str(const char *filename);
 int mx_file_len(const char *filename);
 char *mx_replace_substr(const char *str, const char *sub, const char *replace);
 int mx_read_line(char **lineptr, size_t buf_size, char delim, const int fd);
-
+char **mx_create_char_arr(int number);
+int mx_get_size_array_of_strings(char** arr);
+char* mx_to_lower_case(char *str);
+int mx_strcmp_lower_case(const char *s1, const char *s2) ;
 /*
 **********MEM_PACK**********
 */
